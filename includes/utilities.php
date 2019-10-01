@@ -18,7 +18,7 @@ function acf_is_active( $required_version = '5.0.0' ) {
 	$plugin_path   = ABSPATH . 'wp-content/plugins/';
 
 	// See if the pro version is installed
-	if ( is_plugin_active( self::$acf_pro_file_location ) ) {
+	if ( is_plugin_active( $acf_pro_path ) ) {
 		$plugin_data = get_plugin_data( $plugin_path . $acf_pro_path );
 
 		if ( is_above_version( $plugin_data['Version'], $required_version ) ) {
