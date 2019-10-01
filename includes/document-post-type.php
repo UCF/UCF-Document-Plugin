@@ -20,6 +20,7 @@ class Document {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register' ), 10, 0 );
+		add_action( 'posts_results', array( $this, 'meta' ), 10, 2 );
 
 		if ( Utils\acf_is_active() ) {
 			add_action( 'acf/init', array( $this, 'fields' ), 10, 0 );
@@ -168,6 +169,7 @@ class Document {
 			'type'              => 'file',
 			'instructions'      => 'Upload the document',
 			'required'          => 0,
+			'save_format'       => 'url',
 			'conditional_logic' => array(
 				array(
 					array(
@@ -224,6 +226,53 @@ class Document {
 		);
 
 		acf_add_local_field_group( $field_group );
+	}
+
+	/**
+	 * Adds the post meta fields to the
+	 * WP_Post object
+	 * @author Jim Barnes
+	 * @since 0.1.0
+	 * @param array $posts The post objects
+	 * @param WP_Query $query The query obejct
+	 * @return array
+	 */
+	public function meta( $posts, $query ) {
+		if ( $query->get( 'post_type' ) === 'document' ) {
+			foreach( $posts as $post ) {
+				$post = $this->append_post_meta( $post );
+			}
+		}
+
+		return $posts;
+	}
+
+	/**
+	 * Adds the post meta fields to an
+	 * individual post
+	 * @author Jim Barnes
+	 * @since 0.1.0
+	 * @param WP_Post $post The post object
+	 * @return WP_Post
+	 */
+	private function append_post_meta( $post ) {
+		$meta = array();
+
+		$type = get_field( 'document_type', $post->ID );
+		$file = ( $type === 'uploaded' )
+				? get_field( 'document_upload', $post->ID )
+				: get_field( 'document_external', $post->ID );
+		$desc = get_field( 'document_description', $post->ID );
+
+		$meta['type'] = $type;
+		$meta['file'] = $file;
+		$meta['description'] = $desc;
+
+		$meta = apply_filters( 'ucf_document_append_post_meta', $meta, $post->ID );
+
+		$post->meta = (object)$meta;
+
+		return $post;
 	}
 }
 
