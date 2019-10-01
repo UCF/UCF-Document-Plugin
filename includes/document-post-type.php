@@ -5,6 +5,8 @@
  */
 namespace UCFDocument\PostTypes;
 
+use UCFDocument\Utils;
+
 class Document {
 	private
 		$singular,
@@ -18,6 +20,10 @@ class Document {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register' ), 10, 0 );
+
+		if ( Utils\acf_is_active() ) {
+			add_action( 'acf/init', array( $this, 'fields' ), 10, 0 );
+		}
 	}
 
 	/**
@@ -125,6 +131,99 @@ class Document {
 		$args = apply_filters( 'ucf_document_args', $args );
 
 		return $args;
+	}
+
+	/**
+	 * Adds custom fields for the document
+	 * custom post type
+	 * @author Jim Barnes
+	 * @since 0.1.0
+	 * @return void
+	 */
+	public function fields() {
+		// Bail out if the function doesn't exists, for whatever reason.
+		if ( ! function_exists( 'acf_add_local_field_group' ) ) return;
+
+		$fields  = array();
+
+		$fields[] = array(
+			'key'      => 'document_type',
+			'label'    => 'Type',
+			'name'     => 'document_type',
+			'type'     => 'radio',
+			'choices'  => array(
+				'uploaded' => 'Uploaded',
+				'external' => 'External'
+			),
+			'default_choice' => array(
+				'uploaded' => 'Uploaded'
+			),
+			'required' => 1
+		);
+
+		$fields[] = array(
+			'key'               => 'document_upload',
+			'label'             => 'Uploaded File',
+			'name'              => 'document_upload',
+			'type'              => 'file',
+			'instructions'      => 'Upload the document',
+			'required'          => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'key'      => 'document_type',
+						'operator' => '==',
+						'value'    => 'uploaded'
+					)
+				)
+			)
+		);
+
+		$fields[] = array(
+			'key'      => 'document_external',
+			'label'    => 'External File',
+			'name'     => 'document_external',
+			'type'     => 'text',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'key'      => 'document_type',
+						'operator' => '==',
+						'value'    => 'external'
+					)
+				)
+			)
+		);
+
+		$fields[] = array(
+			'key'          => 'document_description',
+			'label'        => 'Short Description',
+			'name'         => 'document_description',
+			'type'         => 'textarea',
+			'required'     => 0,
+			'instructions' => 'A short description that will be displayed with the file.'
+		);
+
+		$field_group = array(
+			'key'      => 'ucf_document_fields',
+			'title'    => 'Document Fields',
+			'fields'   => $fields,
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'document'
+					)
+				)
+			),
+			'position' => 'normal',
+			'style'    => 'default',
+			'active'   => true
+		);
+
+		acf_add_local_field_group( $field_group );
 	}
 }
 
