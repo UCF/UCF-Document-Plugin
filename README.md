@@ -1,50 +1,43 @@
-=== UCF Document Plugin ===
-Contributors: ucfwebcom
-Requires at least: 5.2.0
-Tested up to: 5.2.3
-Stable tag: 0.1.0
-Requires PHP: 5.4
-License: GPLv3 or later
-License URI: http://www.gnu.org/copyleft/gpl-3.0.html
+# UCF Document Plugin #
 
 Provides a custom post type and taxonomies for managing documents.
 
 
-== Description ==
+## Description ##
 
 The UCF Document plugin provides the `document` custom post type and the `document_category` and `document_tag` taxonomies for managing and displaying documents.
 
 
-== Documentation ==
+## Documentation ##
 
 Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-Plugin/wiki) for detailed information about this plugin, installation instructions, and more.
 
 
-== Changelog ==
+## Changelog ##
 
-= 0.1.0 =
+### 0.1.0 ###
 * Initial pre-release
 
 
-== Upgrade Notice ==
+## Upgrade Notice ##
 
 n/a
 
 
-== Development ==
+## Development ##
 
 Note that compiled, minified css and js files are included within the repo.  Changes to these files should be tracked via git (so that users installing the plugin using traditional installation methods will have a working plugin out-of-the-box.)
 
 [Enabling debug mode](https://codex.wordpress.org/Debugging_in_WordPress) in your `wp-config.php` file is recommended during development to help catch warnings and bugs.
 
-= Requirements =
+### Requirements ###
 * node
 * gulp-cli
 
-= Plugin Depedenecies =
+### Plugin Depedenecies ###
 * [Advance Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
 
-= Instructions =
+### Instructions ###
 1. Clone the UCF-Document-Plugin repo into your local development environment, within your WordPress installation's `plugins/` directory: `git clone https://github.com/UCF/UCF-Document-Plugin.git`
 2. `cd` into the new UCF-Document-Plugin directory, and run `npm install` to install required packages for development into `node_modules/` within the repo
 3. Optional: If you'd like to enable [BrowserSync](https://browsersync.io) for local development, or make other changes to this project's default gulp configuration, copy `gulp-config.template.json`, make any desired changes, and save as `gulp-config.json`.
@@ -58,10 +51,10 @@ Note that compiled, minified css and js files are included within the repo.  Cha
 6. Configure plugin settings from the WordPress admin under "UCF Documents".
 7. Run `gulp watch` to continuously watch changes to scss and js files. If you enabled BrowserSync in `gulp-config.json`, it will also reload your browser when plugin files change.
 
-= Other Notes =
+### Other Notes ###
 * This plugin's README.md file is automatically generated. Please only make modifications to the README.txt file, and make sure the `gulp readme` command has been run before committing README changes.  See the [contributing guidelines](https://github.com/UCF/UCF-Document-Plugin/blob/master/CONTRIBUTING.md) for more information.
 
 
-== Contributing ==
+## Contributing ##
 
 Want to submit a bug report or feature request?  Check out our [contributing guidelines](https://github.com/UCF/UCF-Document-Plugin/blob/master/CONTRIBUTING.md) for more information.  We'd love to hear from you!

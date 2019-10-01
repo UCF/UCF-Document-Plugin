@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: {{My Project}}
-Description: {{Short project description here}}
-Version: 0.0.0
+Plugin Name: UCF Document Plugin
+Description: Provides a custom post type and taxonomies for managing documents
+Version: 0.1.0
 Author: UCF Web Communications
 License: GPL3
-GitHub Plugin URI: UCF/{{My-Project}}
+GitHub Plugin URI: UCF/UCF-Document-Plugin
 */
 
 if ( ! defined( 'WPINC' ) ) {
