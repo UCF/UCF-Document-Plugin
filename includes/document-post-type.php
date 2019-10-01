@@ -218,7 +218,7 @@ class Document {
 					)
 				)
 			),
-			'position' => 'normal',
+			'position' => 'acf_after_title',
 			'style'    => 'default',
 			'active'   => true
 		);
