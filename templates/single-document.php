@@ -10,6 +10,10 @@ if ( $post->meta->type === 'uploaded' ) {
 	$filesize = $post->meta->file['filesize'];
 
 	header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+	header("Expires: 0");
+	header("Cache-Control: no-cache, no-store, must-revalidate");
+	header('Cache-Control: pre-check=0, post-check=0, max-age=0', false);
+	header("Pragma: no-cache");
 	header("Cache-Control: public");
 	header("Content-Type: " . $filemime );
 	header("Content-Transfer-Encoding: Binary");
@@ -17,11 +21,13 @@ if ( $post->meta->type === 'uploaded' ) {
 	header("Content-Disposition: attachment; filename=" . $filename);
 	readfile( $filepath );
 	return;
-} else {
-	if ( ! empty( $post->meta->file ) ) {
-		wp_redirect( $post->meta->file, 301 );
-		exit;
-	}
+} else if ( ! empty( $post->meta->file ) ) {
+	header("Expires: 0");
+	header("Cache-Control: no-cache, no-store, must-revalidate");
+	header('Cache-Control: pre-check=0, post-check=0, max-age=0', false);
+	header("Pragma: no-cache");
+	wp_redirect( $post->meta->file, 301 );
+	exit;
 }
 
 // If you've made it down here, you're in dangerous territory
