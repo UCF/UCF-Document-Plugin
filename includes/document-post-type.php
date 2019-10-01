@@ -14,7 +14,7 @@ class Document {
 	/**
 	 * Default constructor. Adds init hook
 	 * @author Jim Barnes
-	 * @since 1.0.0
+	 * @since 0.1.0
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'register' ), 10, 0 );

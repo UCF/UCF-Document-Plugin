@@ -9,7 +9,7 @@ GitHub Plugin URI: UCF/UCF-Document-Plugin
 */
 
 namespace UCFDocument;
-use UCFDocument\Document;
+use UCFDocument\PostTypes\Document;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
@@ -40,7 +40,8 @@ require_once 'includes/utilities.php';
  * @return void
  */
 function activate() {
-	Document\register();
+	$doc = new Document();
+	$doc->register();
 	flush_rewrite_rules();
 }
 
