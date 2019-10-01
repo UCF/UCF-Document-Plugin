@@ -94,7 +94,9 @@ class Document {
 	public function args() {
 		$taxonomies = apply_filters(
 			'ucf_document_taxonomies',
-			array()
+			array(
+				'post_tag'
+			)
 		);
 
 		$args = array(

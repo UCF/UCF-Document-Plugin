@@ -25,6 +25,7 @@ define( 'UCF_DOCUMENT__PLUGIN_PATH', dirname( __FILE__ ) );
  * Includes
  */
 require_once 'includes/document-post-type.php';
+require_once 'includes/directory-taxonomy.php';
 require_once 'includes/utilities.php';
 
 /**
