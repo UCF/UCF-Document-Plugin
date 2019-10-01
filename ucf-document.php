@@ -10,6 +10,7 @@ GitHub Plugin URI: UCF/UCF-Document-Plugin
 
 namespace UCFDocument;
 use UCFDocument\PostTypes\Document;
+use UCFDocument\Taxonomies\Directory;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
@@ -42,6 +43,8 @@ require_once 'includes/directory-taxonomy.php';
 function activate() {
 	$doc = new Document();
 	$doc->register();
+	$dir = new Directory();
+	$dir->register();
 	flush_rewrite_rules();
 }
 
