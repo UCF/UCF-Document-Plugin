@@ -21,6 +21,7 @@ class Document {
 	public function __construct() {
 		add_action( 'init', array( $this, 'register' ), 10, 0 );
 		add_action( 'posts_results', array( $this, 'meta' ), 10, 2 );
+		add_filter( 'single_template', array( $this, 'single_template' ), 10, 1 );
 
 		if ( Utils\acf_is_active() ) {
 			add_action( 'acf/init', array( $this, 'fields' ), 10, 0 );
@@ -169,7 +170,7 @@ class Document {
 			'type'              => 'file',
 			'instructions'      => 'Upload the document',
 			'required'          => 0,
-			'save_format'       => 'url',
+			'save_format'       => 'object',
 			'conditional_logic' => array(
 				array(
 					array(
@@ -273,6 +274,18 @@ class Document {
 		$post->meta = (object)$meta;
 
 		return $post;
+	}
+
+	public function single_template( $single ) {
+		global $post;
+
+		if ( $post->post_type === 'document' ) {
+			if ( file_exists( UCF_DOCUMENT__PLUGIN_PATH . '/templates/single-document.php' ) ) {
+				return UCF_DOCUMENT__PLUGIN_PATH . '/templates/single-document.php';
+			}
+		}
+
+		return $single;
 	}
 }
 
