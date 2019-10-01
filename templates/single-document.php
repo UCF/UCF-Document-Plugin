@@ -4,23 +4,25 @@
  */
 the_post();
 if ( $post->meta->type === 'uploaded' ) {
-	$filepath = $post->meta->file['link'];
-	$filename = $post->meta->file['filename'];
-	$filemime = $post->meta->file['mime_type'];
-	$filesize = $post->meta->file['filesize'];
+	if ( isset( $post->meta->file['link'] ) ) {
+		$filepath = $post->meta->file['link'];
+		$filename = $post->meta->file['filename'];
+		$filemime = $post->meta->file['mime_type'];
+		$filesize = $post->meta->file['filesize'];
 
-	header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
-	header("Expires: 0");
-	header("Cache-Control: no-cache, no-store, must-revalidate");
-	header('Cache-Control: pre-check=0, post-check=0, max-age=0', false);
-	header("Pragma: no-cache");
-	header("Cache-Control: public");
-	header("Content-Type: " . $filemime );
-	header("Content-Transfer-Encoding: Binary");
-	header("Content-Length:" . $filesize );
-	header("Content-Disposition: attachment; filename=" . $filename);
-	readfile( $filepath );
-	return;
+		header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+		header("Expires: 0");
+		header("Cache-Control: no-cache, no-store, must-revalidate");
+		header('Cache-Control: pre-check=0, post-check=0, max-age=0', false);
+		header("Pragma: no-cache");
+		header("Cache-Control: public");
+		header("Content-Type: " . $filemime );
+		header("Content-Transfer-Encoding: Binary");
+		header("Content-Length:" . $filesize );
+		header("Content-Disposition: attachment; filename=" . $filename);
+		readfile( $filepath );
+		return;
+	}
 } else if ( ! empty( $post->meta->file ) ) {
 	header("Expires: 0");
 	header("Cache-Control: no-cache, no-store, must-revalidate");
