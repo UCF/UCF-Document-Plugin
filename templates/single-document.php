@@ -22,8 +22,13 @@ if ( $post->meta->type === 'uploaded' ) {
 		wp_redirect( $post->meta->file, 301 );
 		exit;
 	}
-
-	exit;
 }
 
+// If you've made it down here, you're in dangerous territory
+global $wp_query;
+$wp_query->set_404();
+status_header(404);
+$template = get_404_template();
+
+include_once $template;
 exit;
