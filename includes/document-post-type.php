@@ -208,6 +208,8 @@ class Document {
 			'instructions' => 'A short description that will be displayed with the file.'
 		);
 
+		$fields = apply_filters( 'ucf_document_fields', $fields );
+
 		$field_group = array(
 			'key'      => 'ucf_document_fields',
 			'title'    => 'Document Fields',
