@@ -11,6 +11,7 @@ GitHub Plugin URI: UCF/UCF-Document-Plugin
 namespace UCFDocument;
 use UCFDocument\PostTypes\Document;
 use UCFDocument\Taxonomies\Directory;
+use UCFDocument\Admin\Config;
 
 if ( ! defined( 'WPINC' ) ) {
     die;
@@ -26,6 +27,7 @@ define( 'UCF_DOCUMENT__PLUGIN_PATH', dirname( __FILE__ ) );
  * Includes
  */
 require_once 'includes/utilities.php';
+require_once 'admin/config.php';
 require_once 'includes/document-post-type.php';
 require_once 'includes/directory-taxonomy.php';
 
@@ -41,6 +43,7 @@ require_once 'includes/directory-taxonomy.php';
  * @return void
  */
 function activate() {
+	Config::add_options();
 	$doc = new Document();
 	$doc->register();
 	$dir = new Directory();
@@ -58,7 +61,15 @@ register_activation_hook( UCF_DOCUMENT__PLUGIN_FILE, __NAMESPACE__ . '\activate'
  * @return void
  */
 function deactivate() {
+	Config::delete_options();
 	flush_rewrite_rules();
 }
 
 register_deactivation_hook( UCF_DOCUMENT__PLUGIN_FILE, __NAMESPACE__ . '\deactivate' );
+
+function init() {
+	// Add the configuration hooks
+	Config::add_hooks();
+}
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\init', 10, 0 );
