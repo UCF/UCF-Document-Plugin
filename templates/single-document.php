@@ -19,7 +19,7 @@ if ( $post->meta->type === 'uploaded' ) {
 		$filemime = $post->meta->file['mime_type'];
 		$filesize = $post->meta->file['filesize'];
 
-		header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+		header( $_SERVER["SERVER_PROTOCOL"] . " 200 OK" );
 		header( "Expires: 0");
 		header( "Cache-Control: no-cache, no-store, must-revalidate");
 		header( "Cache-Control: pre-check=0, post-check=0, max-age=0", false);
@@ -28,8 +28,8 @@ if ( $post->meta->type === 'uploaded' ) {
 		header( "Content-Type: " . $filemime );
 		if ( $force_download ) {
 			header( "Content-Transfer-Encoding: Binary");
+			header( "Content-Length:" . $filesize );
 		}
-		header( "Content-Length:" . $filesize );
 		header( "Content-Disposition: $content_disposition; filename=\"$filename\"" );
 		readfile( $filepath );
 		return;
@@ -37,7 +37,7 @@ if ( $post->meta->type === 'uploaded' ) {
 } else if ( ! empty( $post->meta->file ) ) {
 	header("Expires: 0");
 	header("Cache-Control: no-cache, no-store, must-revalidate");
-	header("Cache-Control: pre-check=0, post-check=0, max-age=0", false);
+	header('Cache-Control: pre-check=0, post-check=0, max-age=0', false);
 	header("Pragma: no-cache");
 	wp_redirect( $post->meta->file, 301 );
 	exit;
