@@ -14,7 +14,7 @@ if ( $post->meta->type === 'uploaded' ) {
 		// forcing downloads or not
 		$content_disposition = $force_download ? 'attachment' : 'inline';
 
-		$filepath = $post->meta->file['link'];
+		$filepath = get_attached_file( $post->meta->file['id'] );
 		$filename = $post->meta->file['filename'];
 		$filemime = $post->meta->file['mime_type'];
 		$filesize = $post->meta->file['filesize'];
