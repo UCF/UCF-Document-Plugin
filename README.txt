@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.2.0
 Tested up to: 5.2.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 Requires PHP: 5.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -21,6 +21,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 
 == Changelog ==
+
+= 0.2.0 =
+Enhancements:
+* Added configuration option for determining default behavior when clicking a document link.
 
 = 0.1.0 =
 * Initial pre-release
