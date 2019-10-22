@@ -26,7 +26,9 @@ if ( $post->meta->type === 'uploaded' ) {
 		header( "Pragma: no-cache");
 		header( "Cache-Control: public");
 		header( "Content-Type: " . $filemime );
-		header( "Content-Transfer-Encoding: Binary");
+		if ( ! $force_download ) {
+			header( "Content-Transfer-Encoding: Binary");
+		}
 		header( "Content-Length:" . $filesize );
 		header( "Content-Disposition: $content_disposition; filename=\"$filename\"" );
 		readfile( $filepath );
