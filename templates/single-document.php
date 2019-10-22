@@ -2,10 +2,19 @@
 /**
  * The Single Document template
  */
+
+use UCFDocument\Admin\Config;
+
 the_post();
 if ( $post->meta->type === 'uploaded' ) {
 	if ( isset( $post->meta->file['link'] ) ) {
-		$filepath = $post->meta->file['link'];
+		$force_download = Config::get_option_or_default( 'force_download' );
+
+		// Set the content disposition based on if we're
+		// forcing downloads or not
+		$content_disposition = $force_download ? 'attachment' : 'inline';
+
+		$filepath = get_attached_file( $post->meta->file['id'] );
 		$filename = $post->meta->file['filename'];
 		$filemime = $post->meta->file['mime_type'];
 		$filesize = $post->meta->file['filesize'];
@@ -19,7 +28,7 @@ if ( $post->meta->type === 'uploaded' ) {
 		header("Content-Type: " . $filemime );
 		header("Content-Transfer-Encoding: Binary");
 		header("Content-Length:" . $filesize );
-		header("Content-Disposition: attachment; filename=" . $filename);
+		header("Content-Disposition: $content_disposition; filename=" . $filename);
 		readfile( $filepath );
 		return;
 	}
