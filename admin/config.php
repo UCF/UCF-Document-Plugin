@@ -247,7 +247,7 @@ class Config {
 				if ( ! empty( $options ) ) :
 			?>
 				<p class="description"><strong><?php echo $description; ?></strong></p>
-				<ul class="catagorychecklist">
+				<ul class="categorychecklist">
 			<?php
 					foreach( $options as $val => $text ) :
 			?>
