@@ -15,6 +15,14 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.1 ###
+Documentation:
+* Updated contributing doc to reflect the switch from slack to teams.
+
+### 0.2.0 ###
+Enhancements:
+* Added configuration option for determining default behavior when clicking a document link.
+
 ### 0.1.0 ###
 * Initial pre-release
 
