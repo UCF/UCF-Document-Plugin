@@ -15,6 +15,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.2 ###
+Bug Fixes:
+* Updated ACF check from an `is_plugin_active` to a `class_exists` check. #15 Thank you @TheMarkBennett
+
 ### 0.2.1 ###
 Documentation:
 * Updated contributing doc to reflect the switch from slack to teams.
