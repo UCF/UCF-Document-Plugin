@@ -13,19 +13,19 @@ namespace UCFDocument\Utils;
  * @param string $required_version The version the plugin must be
  */
 function acf_is_active( $required_version = '5.0.0' ) {
-	$acf_pro_path  = 'advanced-custom-fields-pro/acf.php';
-	$acf_free_path = 'advanced-custom-fields/acf.php';
+	$acf_pro_path  = apply_filters( 'ucf_document_acf_pro_path', 'advanced-custom-fields-pro/acf.php' );
+	$acf_free_path = apply_filters( 'ucf_document_acf_free_path', 'advanced-custom-fields/acf.php' );
 	$plugin_path   = ABSPATH . 'wp-content/plugins/';
 
 	// See if the pro version is installed
-	if ( class_exists( 'acf_pro' ) ) {
+	if ( class_exists( 'acf_pro' ) || safe_is_plugin_active( $acf_pro_path ) ) {
 		$plugin_data = get_plugin_data( $plugin_path . $acf_pro_path );
 
 		if ( is_above_version( $plugin_data['Version'], $required_version ) ) {
 			return true;
 		}
 	}
-	if ( class_exists( 'ACF' ) ) {
+	if ( class_exists( 'ACF' ) || safe_is_plugin_active( $acf_free_path ) ) {
 		$plugin_data = get_plugin_data( $plugin_path . $acf_free_path );
 
 		if ( is_above_version( $plugin_data['Version'], $required_version ) ) {
@@ -34,6 +34,17 @@ function acf_is_active( $required_version = '5.0.0' ) {
 	}
 
 	return false;
+}
+
+/**
+ * Returns a boolean indicating if the plugin is active.
+ * @author Jim Barnes
+ * @since 0.2.3
+ * @param string The path of the plugin to check for.
+ * @return bool
+ */
+function safe_is_plugin_active( $plugin_path ) {
+	return in_array( $plugin_path, apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
 }
 
 /**
