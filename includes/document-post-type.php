@@ -224,8 +224,7 @@ class Document {
 				)
 			),
 			'position' => 'acf_after_title',
-			'style'    => 'default',
-			'active'   => true
+			'style'    => 'default'
 		);
 
 		acf_add_local_field_group( $field_group );
