@@ -21,15 +21,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Constants
  */
 define( 'UCF_DOCUMENT__PLUGIN_FILE', __FILE__ );
-define( 'UCF_DOCUMENT__PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'UCF_DOCUMENT__PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * Includes
  */
-require_once 'includes/utilities.php';
-require_once 'admin/config.php';
-require_once 'includes/document-post-type.php';
-require_once 'includes/directory-taxonomy.php';
+require_once UCF_DOCUMENT__PLUGIN_PATH . 'includes/utilities.php';
+require_once UCF_DOCUMENT__PLUGIN_PATH . 'admin/config.php';
+require_once UCF_DOCUMENT__PLUGIN_PATH . 'includes/document-post-type.php';
+require_once UCF_DOCUMENT__PLUGIN_PATH . 'includes/directory-taxonomy.php';
 
 /**
  * Activation/Deactivation Hooks
