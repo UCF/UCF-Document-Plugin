@@ -23,9 +23,11 @@ class Document {
 		add_action( 'posts_results', array( $this, 'meta' ), 10, 2 );
 		add_filter( 'single_template', array( $this, 'single_template' ), 10, 1 );
 
-		if ( Utils\acf_is_active() ) {
-			add_action( 'acf/init', array( $this, 'fields' ), 10, 0 );
-		}
+		add_action( 'plugins_loaded', function() {
+			if ( Utils\acf_is_active() ) {
+				add_action( 'acf/init', array( $this, 'fields' ), 10, 0 );
+			}
+		} );
 	}
 
 	/**
@@ -224,8 +226,7 @@ class Document {
 				)
 			),
 			'position' => 'acf_after_title',
-			'style'    => 'default',
-			'active'   => true
+			'style'    => 'default'
 		);
 
 		acf_add_local_field_group( $field_group );
