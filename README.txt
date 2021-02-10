@@ -2,7 +2,7 @@
 Contributors: ucfwebcom
 Requires at least: 5.2.0
 Tested up to: 5.2.4
-Stable tag: 0.2.2
+Stable tag: 0.2.3
 Requires PHP: 5.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -21,6 +21,14 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 
 == Changelog ==
+
+= 0.2.3 =
+Enhancements:
+* Added `ucf_document_acf_pro_path` and `ucf_document_acf_free_path` filter hooks to allow custom ACF install paths to be specified when checking if ACF is activated.
+
+Bug Fixes:
+* Fixed a bug where checks to determine if ACF is active weren't firing at the correct time, causing Document fields to not register
+* Added plugin dir path to required files in main plugin file
 
 = 0.2.2 =
 Bug Fixes:
