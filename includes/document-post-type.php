@@ -283,8 +283,8 @@ class Document {
 		global $post;
 
 		if ( $post->post_type === 'document' ) {
-			if ( file_exists( UCF_DOCUMENT__PLUGIN_PATH . '/templates/single-document.php' ) ) {
-				return UCF_DOCUMENT__PLUGIN_PATH . '/templates/single-document.php';
+			if ( file_exists( UCF_DOCUMENT__PLUGIN_PATH . 'templates/single-document.php' ) ) {
+				return UCF_DOCUMENT__PLUGIN_PATH . 'templates/single-document.php';
 			}
 		}
 

@@ -15,6 +15,14 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.3 ###
+Enhancements:
+* Added `ucf_document_acf_pro_path` and `ucf_document_acf_free_path` filter hooks to allow custom ACF install paths to be specified when checking if ACF is activated.
+
+Bug Fixes:
+* Fixed a bug where checks to determine if ACF is active weren't firing at the correct time, causing Document fields to not register
+* Added plugin dir path to required files in main plugin file
+
 ### 0.2.2 ###
 Bug Fixes:
 * Updated ACF check from an `is_plugin_active` to a `class_exists` check. #15 Thank you @TheMarkBennett
