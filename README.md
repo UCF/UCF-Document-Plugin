@@ -15,6 +15,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.4 ###
+Bug Fixes:
+* Suppressed a potential namespacing-related error.
+
 ### 0.2.3 ###
 Enhancements:
 * Added `ucf_document_acf_pro_path` and `ucf_document_acf_free_path` filter hooks to allow custom ACF install paths to be specified when checking if ACF is activated.
