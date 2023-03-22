@@ -1,8 +1,8 @@
 === UCF Document Plugin ===
 Contributors: ucfwebcom
 Requires at least: 5.2.0
-Tested up to: 5.2.4
-Stable tag: 0.2.4
+Tested up to: 6.1
+Stable tag: 0.2.5
 Requires PHP: 5.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/copyleft/gpl-3.0.html
@@ -21,6 +21,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 
 == Changelog ==
+
+= 0.2.5 =
+Enhancements:
+* Added composer file.
 
 = 0.2.4 =
 Bug Fixes:

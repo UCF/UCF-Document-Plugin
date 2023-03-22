@@ -15,6 +15,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.5 ###
+Enhancements:
+* Added composer file.
+
 ### 0.2.4 ###
 Bug Fixes:
 * Suppressed a potential namespacing-related error.

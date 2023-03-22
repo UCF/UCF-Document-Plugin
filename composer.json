@@ -1,0 +1,8 @@
+{
+    "name": "ucf/ucf-document-plugin",
+    "description": "Provides a custom post type and taxonomies for managing documents.",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
