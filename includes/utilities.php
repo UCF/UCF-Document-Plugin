@@ -17,6 +17,10 @@ function acf_is_active( $required_version = '5.0.0' ) {
 	$acf_free_path = \apply_filters( 'ucf_document_acf_free_path', 'advanced-custom-fields/acf.php' );
 	$plugin_path   = ABSPATH . 'wp-content/plugins/';
 
+	if ( ! function_exists( 'get_plugin_data' ) ) {
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	}
+
 	// See if the pro version is installed
 	if ( \class_exists( 'acf_pro' ) || safe_is_plugin_active( $acf_pro_path ) ) {
 		$plugin_data = \get_plugin_data( $plugin_path . $acf_pro_path );
