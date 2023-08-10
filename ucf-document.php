@@ -2,7 +2,7 @@
 /*
 Plugin Name: UCF Document Plugin
 Description: Provides a custom post type and taxonomies for managing documents
-Version: 0.2.5
+Version: 0.2.6
 Author: UCF Web Communications
 License: GPL3
 GitHub Plugin URI: UCF/UCF-Document-Plugin

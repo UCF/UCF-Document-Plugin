@@ -15,6 +15,10 @@ Head over to the [UCF Document Plugin wiki](https://github.com/UCF/UCF-Document-
 
 ## Changelog ##
 
+### 0.2.6 ###
+Bug Fixes:
+* Added extra check to ensure `get_plugin_data` is defined.
+
 ### 0.2.5 ###
 Enhancements:
 * Added composer file.
